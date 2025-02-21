@@ -26,6 +26,9 @@ fruit = FruitEnum()
 async def get_fruit_item(fruit_item: str):
     if fruit_item == fruit.fruit:
         return {'food': fruit_item, 'message': 'health for living...'}
+    if fruit_item == fruit.vegetable:
+        return {'food': fruit_item, 'message': 'vegetables health for living...'}
+    return {'dairy': fruit.dairy, 'message': 'dairy products are healthy for body'}
 
 
 
