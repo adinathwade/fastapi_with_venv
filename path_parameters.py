@@ -14,21 +14,19 @@ async def post(id):
 async def get_item(item: int):
     return {'Item': item}
 
-class FruitEnum:
-    def __init__(self):
-        self.fruit = 'fruit'
-        self.vegetable = 'vegetable'
-        self.dairy = 'dairy'
-
-fruit = FruitEnum()
+from enum import Enum
+class FruitEnum(str, Enum):
+    fruit = 'fruit'
+    vegetable = 'vegetable'
+    dairy = 'dairy'
 
 @app.get("/fruit/{fruit_item}")
-async def get_fruit_item(fruit_item: str):
-    if fruit_item == fruit.fruit:
+async def get_fruit_item(fruit_item: FruitEnum):
+    if fruit_item == FruitEnum.fruit:
         return {'food': fruit_item, 'message': 'health for living...'}
-    if fruit_item == fruit.vegetable:
+    if fruit_item == FruitEnum.vegetable:
         return {'food': fruit_item, 'message': 'vegetables health for living...'}
-    return {'dairy': fruit.dairy, 'message': 'dairy products are healthy for body'}
+    return {'dairy': FruitEnum.dairy, 'message': 'dairy products are healthy for body'}
 
 
 
